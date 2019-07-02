@@ -46,7 +46,7 @@ namespace StudentWebAPI
             {
                 app.UseHsts();
             }
-           
+          
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
