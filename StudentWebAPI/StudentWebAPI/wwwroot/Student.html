@@ -36,12 +36,17 @@
             });
 
             var inpname = document.getElementById("name");
+
             var inpsolary = document.getElementById("solary");
+
             $('#submit').click(function () {
 
                 var student = new Object();
+
                 student.name = $('#name').val();
+
                 student.solary = $('#solary').val();
+
                 $.ajax(
                     {
                         url: 'https://localhost:44358/api/Student/api/AddStudentList',
