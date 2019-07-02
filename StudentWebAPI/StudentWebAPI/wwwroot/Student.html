@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        var loaded = false;
+        var mainContainer = document.getElementById("myData");
+            var student = $('#studentlist');
+            $('#btn').click(function () {
+
+                if (loaded == false) {
+                    $.ajax(
+                        {
+                            url: 'https://localhost:44316/api/Student/api/Students',
+                            type: 'GET',
+                            contentType: "application/json",
+                            success: function (data) {
+                                for (var i = 0; i < data.length; i++) {
+                                    var div = document.createElement("div");
+                                    div.innerHTML = data[i].name + ' ' + data[i].solary;
+                                    mainContainer.appendChild(div);
+                                }
+                            }
+                        }
+                    );
+                }
+                loaded = true;
+            });
+            $('#btnclr').click(function () {
+
+                $('#myData').empty();
+                loaded = false;
+            });
+
+            var inpname = document.getElementById("name");
+            var inpsolary = document.getElementById("solary");
+            $('#submit').click(function () {
+
+                var student = new Object();
+                student.name = $('#name').val();
+                student.solary = $('#solary').val();
+                $.ajax(
+                    {
+                        url: 'https://localhost:44316/api/Student/api/AddStudentList',
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        data: JSON.stringify(student),
+                        success: function (data) {
+
+                    }
+                    }
+                );
+            });
+        });
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <input id="btn" type="button" value="Get All Student" />
+    <input id="btnclr" type="button" value="Clear" />
+    <ul id="studentlist">  </ul>
+    <div id="myData"></div>
+
+
+    <input id="name" name="stname" type="text" value="" />
+    <input id="solary" name="stsolary" type="number" value="" />
+    <input id="submit" type="submit" value="post" />
+    <p id="para"></p>
+
+</body>
+</html>
