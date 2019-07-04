@@ -12,7 +12,6 @@ namespace StudentWebAPI.DataBase
         public DbSet<Student> Students { get; set; }
         public MyContext(DbContextOptions options) : base(options)
         {
-
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

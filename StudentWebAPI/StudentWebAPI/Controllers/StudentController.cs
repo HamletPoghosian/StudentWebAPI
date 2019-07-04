@@ -59,6 +59,22 @@ namespace StudentWebAPI.Controllers
 
                 return StatusCode(404, ex.Message);
             }
-        }               
+        }
+        [HttpPut]
+        [Route("api/UpdateStudentList")]
+        public ObjectResult UpdateStudent(Student model)
+        {
+            try
+            {
+                _myContext.Update(model);
+                _myContext.SaveChanges();
+                return StatusCode(200, model);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(404, ex.Message);
+            }
+        }
     }
 }
