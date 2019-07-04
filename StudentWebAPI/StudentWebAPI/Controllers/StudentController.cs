@@ -56,7 +56,6 @@ namespace StudentWebAPI.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(404, ex.Message);
             }
         }
@@ -67,6 +66,24 @@ namespace StudentWebAPI.Controllers
             try
             {
                 _myContext.Update(model);
+                _myContext.SaveChanges();
+
+                return StatusCode(200, model);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(404, ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/DeleteStudentList")]
+        public ObjectResult DeleteStudent(Student model)
+        {
+            try
+            {
+                _myContext.Remove(model);
                 _myContext.SaveChanges();
 
                 return StatusCode(200, model);
