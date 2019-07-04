@@ -12,15 +12,13 @@ namespace StudentWebAPI.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+
         List<Student> studets = new List<Student>();
         private MyContext _myContext;
         public StudentController(MyContext myContext)
         {
             _myContext = myContext;
         }
-
-
-
 
         [HttpGet]
         [Route("api/Students")]
@@ -41,9 +39,9 @@ namespace StudentWebAPI.Controllers
             {
                 return StatusCode(200, studet);
             }
-            return StatusCode(404, studet);
-           
+            return StatusCode(404, studet);           
         }
+
         [HttpPost]
         [Route("api/AddStudentList")]
         public ObjectResult AddStudentList(Student model)
@@ -51,7 +49,9 @@ namespace StudentWebAPI.Controllers
             try
             {
                 _myContext.Add(model);
+
                 _myContext.SaveChanges();
+
                 return StatusCode(200, model);
             }
             catch (Exception ex)
@@ -59,8 +59,6 @@ namespace StudentWebAPI.Controllers
 
                 return StatusCode(404, ex.Message);
             }
-
-        }
-               
+        }               
     }
 }
