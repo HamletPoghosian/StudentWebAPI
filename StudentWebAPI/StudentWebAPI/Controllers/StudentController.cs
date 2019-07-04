@@ -68,6 +68,7 @@ namespace StudentWebAPI.Controllers
             {
                 _myContext.Update(model);
                 _myContext.SaveChanges();
+
                 return StatusCode(200, model);
             }
             catch (Exception ex)
