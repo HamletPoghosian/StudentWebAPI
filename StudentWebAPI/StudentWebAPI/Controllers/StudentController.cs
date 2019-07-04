@@ -35,18 +35,14 @@ namespace StudentWebAPI.Controllers
         [Route("api/Students/{id}")]
         public ObjectResult GetJsonResult(int id)
         {
-
-
             var studet = _myContext.Students.FirstOrDefault(s => s.Id == id);
+
             if (studet != null)
             {
                 return StatusCode(200, studet);
             }
             return StatusCode(404, studet);
-
-
-
-
+           
         }
         [HttpPost]
         [Route("api/AddStudentList")]
@@ -65,8 +61,6 @@ namespace StudentWebAPI.Controllers
             }
 
         }
-
-
-
+               
     }
 }
