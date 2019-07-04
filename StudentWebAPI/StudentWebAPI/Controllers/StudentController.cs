@@ -12,7 +12,6 @@ namespace StudentWebAPI.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-
         List<Student> studets = new List<Student>();
         private MyContext _myContext;
         public StudentController(MyContext myContext)
@@ -69,6 +68,7 @@ namespace StudentWebAPI.Controllers
                 _myContext.SaveChanges();
 
                 return StatusCode(200, model);
+
             }
             catch (Exception ex)
             {
