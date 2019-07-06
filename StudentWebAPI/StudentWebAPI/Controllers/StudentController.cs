@@ -24,7 +24,6 @@ namespace StudentWebAPI.Controllers
         public ObjectResult GetJsonResult()
         {
             var studet = _myContext.Students;
-
             return StatusCode(200, studet);
         }
 
@@ -90,7 +89,6 @@ namespace StudentWebAPI.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(404, ex.Message);
             }
         }
