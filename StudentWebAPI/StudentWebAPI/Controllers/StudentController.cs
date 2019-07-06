@@ -71,7 +71,6 @@ namespace StudentWebAPI.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(404, ex.Message);
             }
         }
