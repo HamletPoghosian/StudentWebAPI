@@ -95,13 +95,14 @@ namespace StudentWebAPI.Controllers
 
 
         [HttpDelete]
-        [Route("api/DeleteStudentList")]
+        [Route("api/DeleteStudentAll")]
         public ObjectResult DeleteAllStudent()
         {
             try
             {
-                _myContext.Students.Remove(true);
-
+                _myContext.Students.RemoveRange();
+                
+                _myContext.SaveChanges();
                 return StatusCode(200,this);
             }
             catch (Exception ex)

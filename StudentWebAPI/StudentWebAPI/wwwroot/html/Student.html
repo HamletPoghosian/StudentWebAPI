@@ -60,6 +60,22 @@
                     }
                 );
             });
+
+            $('#deleteall').click(function () {
+
+                $.ajax(
+                    {
+                        url: 'https://localhost:44358/api/Student/api/DeleteStudentAll',
+                        type: 'Delete',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        data: JSON.stringify(student),
+                        success: function (data) {
+
+                        }
+                    }
+                );
+            });
         });
 
     </script>
@@ -75,7 +91,9 @@
     <input id="name" name="stname" type="text" value="" />
     <input id="solary" name="stsolary" type="number" value="" />
     <input id="submit" type="submit" value="post" />
+    <input id="deleteall" type="submit" value="DeleteAll" />
     <p id="para"></p>
+
 
 </body>
 </html>
