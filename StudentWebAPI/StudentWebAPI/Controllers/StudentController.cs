@@ -92,5 +92,22 @@ namespace StudentWebAPI.Controllers
                 return StatusCode(404, ex.Message);
             }
         }
+
+
+        [HttpDelete]
+        [Route("api/DeleteStudentList")]
+        public ObjectResult DeleteAllStudent()
+        {
+            try
+            {
+                _myContext.Students.Remove(true);
+
+                return StatusCode(200,this);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400,ex);
+            }
+        }
     }
 }
