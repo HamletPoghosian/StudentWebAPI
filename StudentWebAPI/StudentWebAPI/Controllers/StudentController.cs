@@ -100,8 +100,11 @@ namespace StudentWebAPI.Controllers
         {
             try
             {
-                _myContext.Students.RemoveRange();
-                
+                var allStudent = _myContext.Students.AsEnumerable();
+  ;                foreach (var item in allStudent)
+                {
+                    _myContext.Remove(item);
+                }
                 _myContext.SaveChanges();
                 return StatusCode(200,this);
             }
